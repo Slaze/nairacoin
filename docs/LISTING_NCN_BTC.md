@@ -86,7 +86,7 @@ Not financial advice. Facts:
 | Ticker | NCN |
 | P2P | 17356 |
 | RPC | 18357 |
-| Genesis hash | TBD |
+| Genesis miner tx | `013c01ff0001ffffffffffff0302017bb117cce7ed6a238f75cca65eff600a7bedf37edd5f0f611a49cba609297c21010d2bca449c24215b92489cd1b17467ee68dbd1f324cb5af541e486a499d29491` (keys discarded, unspendable) |
 | NETWORK_ID | TBD |
 | Seeds | TBD (your VPS IPs) |
 | Explorer | TBD |
