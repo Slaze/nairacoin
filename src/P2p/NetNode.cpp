@@ -7,7 +7,6 @@
 #include <algorithm>
 #include <fstream>
 
-#define BOOST_BIND_GLOBAL_PLACEHOLDERS
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 #include <boost/uuid/random_generator.hpp>
