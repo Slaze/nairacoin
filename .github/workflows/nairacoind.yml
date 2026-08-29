@@ -1,0 +1,32 @@
+name: nairacoind genesis
+
+on:
+  push:
+    branches: [protocol-v0.18.5.1]
+  pull_request:
+    branches: [protocol-v0.18.5.1]
+  workflow_dispatch:
+
+jobs:
+  linux-daemon:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential cmake pkg-config python3 \
+            libboost-all-dev libssl-dev libzmq3-dev libunbound-dev \
+            libsodium-dev libunwind-dev liblzma-dev libreadline-dev \
+            libexpat1-dev libhidapi-dev libusb-1.0-0-dev \
+            libprotobuf-dev protobuf-compiler libudev-dev
+      - name: configure
+        run: cmake -S . -B build -D ARCH=default -D BUILD_TESTS=OFF -D CMAKE_BUILD_TYPE=Release
+      - name: daemon
+        run: cmake --build build --target daemon -j$(nproc)
+      - name: boot unique genesis
+        run: bash contrib/nairacoin-boot-genesis.sh ./build/bin/nairacoind /tmp/ncn-boot-ci

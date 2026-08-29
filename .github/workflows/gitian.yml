@@ -1,18 +1,8 @@
 name: ci/gh-actions/gitian
 
+# Identity fork: gitian is manual.
 on:
-  push:
-    paths:
-      - 'contrib/depends/**'
-      - 'contrib/gitian/**'
-      - '!contrib/**.md'
-      - '.github/workflows/gitian.yml'
-  pull_request:
-    paths:
-      - 'contrib/depends/**'
-      - 'contrib/gitian/**'
-      - '!contrib/**.md'
-      - '.github/workflows/gitian.yml'
+  workflow_dispatch:
 
 jobs:
   build-gitian:

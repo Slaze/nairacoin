@@ -1,11 +1,8 @@
 name: ci/gh-actions/depends
 
+# Identity fork: do not run Monero depends CI on Nairacoin genesis.
 on:
-  push:
-  pull_request:
-    paths-ignore:
-      - 'docs/**'
-      - '**/README.md'
+  workflow_dispatch:
 
 env:
   APT_SET_CONF: |

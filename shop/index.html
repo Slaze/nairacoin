@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NCN / BTC — Iconia bureau</title>
+  <meta name="description" content="Nairacoin to Bitcoin two-sided quotes. Not a peg. Opening book only.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@75,600;100,800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1208;
+      --paper: #e4d7b8;
+      --brass: #b8923a;
+      --forest: #0e2418;
+      --copper: #a34a2a;
+      --slip: #f3ead2;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      background: var(--forest);
+      color: var(--paper);
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      line-height: 1.45;
+    }
+    .grille {
+      min-height: 100vh;
+      padding: 2rem 1.25rem 4rem;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 11px, rgba(184,146,58,.12) 11px 12px),
+        radial-gradient(ellipse at 50% 0%, #163322, var(--forest) 55%);
+    }
+    header { max-width: 42rem; margin: 0 auto 2rem; }
+    .mark {
+      font-family: Anybody, sans-serif;
+      font-stretch: 75%;
+      font-weight: 800;
+      letter-spacing: .04em;
+      font-size: .75rem;
+      color: var(--brass);
+      text-transform: uppercase;
+    }
+    h1 {
+      font-family: Anybody, sans-serif;
+      font-stretch: 100%;
+      font-weight: 800;
+      font-size: clamp(2.2rem, 8vw, 4.4rem);
+      line-height: .9;
+      margin: .4rem 0 1rem;
+      color: var(--slip);
+    }
+    h1 span { color: var(--brass); }
+    .lede { max-width: 36rem; color: #cbbd96; }
+    .window {
+      max-width: 42rem;
+      margin: 0 auto;
+      background: var(--slip);
+      color: var(--ink);
+      border: 4px solid var(--brass);
+      box-shadow: 8px 8px 0 #07140c;
+    }
+    .ticket-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: .75rem 1rem;
+      border-bottom: 2px dashed var(--ink);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .75rem;
+    }
+    .pair { font-weight: 600; font-size: 1rem; }
+    .quotes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .quotes dt {
+      font-family: Anybody, sans-serif;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin: 0 0 .35rem;
+    }
+    .quotes dd {
+      margin: 0;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+    .bid, .ask { padding: 1.25rem 1rem 1.5rem; }
+    .bid { border-right: 2px dashed var(--ink); }
+    .ask dt { color: var(--forest); }
+    .foot {
+      padding: 1rem;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: .9rem;
+    }
+    .foot p { margin: 0 0 .75rem; }
+    .foot code { font-family: "IBM Plex Mono", monospace; color: var(--brass); }
+    a { color: var(--brass); }
+    .dns {
+      max-width: 42rem;
+      margin: 2rem auto 0;
+      font-size: .85rem;
+      color: #9eae9a;
+    }
+    @media (max-width: 560px) {
+      .quotes { grid-template-columns: 1fr; }
+      .bid { border-right: 0; border-bottom: 2px dashed var(--ink); }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="grille">
+    <header>
+      <div class="mark">Iconia Global · bureau window</div>
+      <h1>NCN <span>/</span> BTC</h1>
+      <p class="lede">Two-sided quote. Nairacoin is its own asset. Bitcoin does not back it. Opening inventory is about $10 of BTC after the chain is live. Thin book. Not an exchange listing.</p>
+    </header>
+    <section class="window" aria-label="NCN BTC quote ticket">
+      <div class="ticket-head">
+        <span class="pair">NCN/BTC</span>
+        <span>desk closed until genesis</span>
+      </div>
+      <dl class="quotes">
+        <div class="bid">
+          <dt>We buy NCN</dt>
+          <dd>bid — TBD BTC</dd>
+        </div>
+        <div class="ask">
+          <dt>We sell NCN</dt>
+          <dd>ask — TBD BTC</dd>
+        </div>
+      </dl>
+      <div class="foot">
+        <p>Settle BTC on-chain to the bureau address. Settle NCN after <code>nairacoind</code> is live. Quotes appear when both wallets exist.</p>
+        <p>BTC address: <code>pending</code><br>NCN address: <code>pending</code></p>
+        <p>DNS for this window: <code>ncn.iconiaglobal.com</code> CNAME to the host that serves this folder.</p>
+      </div>
+    </section>
+    <p class="dns">You control iconiaglobal.com DNS. Point <code>ncn</code> here. HTTPS on the box. Hosting an NCN/BTC match can be regulated where you live — that is not a DNS problem.</p>
+  </div>
+</body>
+</html>
