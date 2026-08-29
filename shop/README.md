@@ -1,5 +1,7 @@
 # NCN/BTC shop window
 
+Live target after Pages: `https://slaze.github.io/nairacoin/` then CNAME `ncn.iconiaglobal.com`.
+
 Static bureau ticket. Serve `index.html` at `ncn.iconiaglobal.com`.
 
 ## DNS (you)
