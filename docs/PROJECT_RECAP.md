@@ -1,5 +1,20 @@
 # PROJECT_RECAP — nairacoin
 
+## 2026-08-29 — unique genesis boots; protocol branch (Grok)
+
+**Path:** protocol tree `/Users/ugoookogeri/nairacoin-monero-src`. GitHub `master` this repo stays 2016 CryptoNote + shop.
+
+**Done:**
+- Unique `GENESIS_TX` minted Linux; keys discarded.
+- `nairacoind` 0.18.5.1-release offline boot: `get_info.height=1`, genesis hash `87510f172aee54e6a12b8147fd3fb65bd23794f3c6ff39dc3e32881406e9d4b7`, nonce `20260829`.
+- Shop still HTTP 200 at `https://slaze.github.io/nairacoin/`.
+
+**Verify:** docker `nairacoind --offline --non-interactive` + `/get_info` + `get_block` height 0.
+
+**Next:** `protocol-v0.18.5.1` on GitHub. Do not replace `master` until that branch is live. Seed IPs still human.
+
+---
+
 ## 2026-08-29 — gcc 11 build green (Grok)
 
 **Path:** `/Users/ugoookogeri/nairacoin` (`https://github.com/Slaze/nairacoin`)
