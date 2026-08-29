@@ -1,31 +1,29 @@
 # PROJECT_RECAP — nairacoin
 
-## 2026-08-25 — compile + security gate (Grok)
+## 2026-08-29 — gcc 11 build green (Grok)
 
-**Path:** `/Users/ugoookogeri/nairacoin` (clone of https://github.com/Slaze/nairacoin)
+**Path:** `/Users/ugoookogeri/nairacoin` (`https://github.com/Slaze/nairacoin`)
 
-**Goal:** Audit + fix so master builds. Token-tight; no genesis rewrite.
+**Verify:** Actions `33258592044` success. Tip `aa25641`.
 
-**Symptom:** GitHub Actions `Build Nairacoin` failed (`run 32533580989`). gcc 11 + `-Werror`.
-
-**Root cause:**
-1. `include/INode.h` / `src/CryptoNoteCore/ICore.h` use `std::unique_ptr` without `#include <memory>`. Parser dies; `getPoolSymmetricDifference` looks like 4-arg.
-2. Intentional Base58 fallthrough treated as error.
-3. `memcpy` onto `chacha8_key` (has destructor) → `-Werror=class-memaccess`.
-
-**Changes:**
-- `#include <memory>` (and `<functional>` in ICore.h)
-- Base58 `/* fall through */`
-- `generate_chacha8_key` copies `key.data` only
-- gcc 7–11 `-Wno-error=` for old CryptoNote vs modern gcc
-- `ALLOW_DEBUG_COMMANDS` only when `NDEBUG` unset (Release off)
-
-**Verify:** `clang++ -std=c++11 -fsyntax-only` on `INode.h` + `ICore.h`. Full daemon build **not** run here (no local cmake). Push to GitHub to re-run Actions.
+**Fixed:**
+- Missing `<memory>` / std headers (`StdCompat.h` `-include`)
+- Base58 fallthrough → byte loop
+- `chacha8_key` memcpy onto destructor type
+- `random_engine` min/max `constexpr`
+- No throw in `cn_context` dtor
+- sparsetable `string.h`
+- P2P debug cmds off in Release
+- Linux `EAGAIN == EWOULDBLOCK`
+- Boost bind placeholders
+- connectivity_tool link order (Serialization then Common)
+- LTO off (dropped Common::read/write)
 
 **Not done (human):**
-- `GENESIS_COINBASE_TX_HEX` still `""` — first daemon print, then paste
+- `GENESIS_COINBASE_TX_HEX` empty — run `nairacoind`, paste printed tx
 - `SEED_NODES` empty
-- Address prefix still `0x2` (comment says `"f"`)
-- 2016 CryptoNote RPC has no auth; do not expose RPC to internet
+- Address prefix still `0x2` (`"f"`)
+- RPC has no auth — do not expose to internet
+- 2016 CryptoNote, not a modern privacy coin
 
-**Next:** commit + push; confirm Actions green; generate genesis; add seed IPs.
+**Next:** genesis + seed IPs. Then mine.
