@@ -105,7 +105,8 @@ else()
       set(CMAKE_AR gcc-ar)
       set(CMAKE_RANLIB gcc-ranlib)
     endif()
-    set(RELEASE_FLAGS "${RELEASE_FLAGS} -flto")
+    # gcc 11 LTO dropped Common::read/write from static archives.
+    # Enable only with gcc-ar + gold after that is verified.
   endif()
   #if(CMAKE_C_COMPILER_ID STREQUAL "GNU" AND NOT MINGW)
   #  set(RELEASE_FLAGS "${RELEASE_FLAGS} -fno-fat-lto-objects")

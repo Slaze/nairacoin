@@ -4,6 +4,8 @@
 
 #include "DaemonCommandsHandler.h"
 
+#include <boost/bind.hpp>
+
 #include "P2p/NetNode.h"
 #include "CryptoNoteCore/Miner.h"
 #include "CryptoNoteCore/Core.h"
