@@ -6,6 +6,7 @@
 
 #include <cstdint>
 #include <future>
+#include <memory>
 #include <system_error>
 #include <unordered_set>
 

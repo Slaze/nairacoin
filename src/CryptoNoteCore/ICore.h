@@ -5,7 +5,9 @@
 #pragma once
 
 #include <cstdint>
+#include <functional>
 #include <list>
+#include <memory>
 #include <utility>
 #include <vector>
 #include <system_error>
