@@ -19,6 +19,9 @@
 #include "Common/CommandLine.h"
 #include "Common/StringTools.h"
 #include "crypto/crypto.h"
+#ifndef ALLOW_DEBUG_COMMANDS
+#define ALLOW_DEBUG_COMMANDS
+#endif
 #include "P2p/P2pProtocolDefinitions.h"
 #include "P2p/LevinProtocol.h"
 #include "Rpc/CoreRpcServerCommandsDefinitions.h"

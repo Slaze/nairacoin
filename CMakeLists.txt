@@ -45,6 +45,7 @@ else()
     # Since glibc 2.20 _BSD_SOURCE is deprecated, this macro is recomended instead
     add_definitions("-D_DEFAULT_SOURCE -D_GNU_SOURCE")
   endif()
+  add_definitions(-DBOOST_BIND_GLOBAL_PLACEHOLDERS)
   set(ARCH native CACHE STRING "CPU to build for: -march value or default")
   if("${ARCH}" STREQUAL "default")
     set(ARCH_FLAG "")

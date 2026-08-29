@@ -6,6 +6,7 @@
 #include "KVBinaryCommon.h"
 
 #include <cassert>
+#include <limits>
 #include <stdexcept>
 #include <Common/StreamTools.h>
 
