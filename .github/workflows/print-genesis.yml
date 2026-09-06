@@ -1,0 +1,38 @@
+# One-shot: mint GENESIS_COINBASE_TX_HEX. Do not merge to master.
+# Hex is random per run — paste once into src/CryptoNoteConfig.h, then delete this workflow.
+name: print-genesis-once
+
+on:
+  push:
+    branches: [ print-genesis-once ]
+
+jobs:
+  print-genesis:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake libboost-all-dev libssl-dev libunbound-dev
+
+      - name: Configure CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build nairacoind
+        run: cmake --build build --config Release --target Daemon -j$(nproc)
+
+      - name: Print genesis tx
+        run: |
+          BIN="$(find build -type f -name nairacoind | head -1)"
+          test -n "$BIN"
+          "$BIN" --print-genesis-tx | tee genesis-hex.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: genesis-hex
+          path: genesis-hex.txt
+          retention-days: 7
