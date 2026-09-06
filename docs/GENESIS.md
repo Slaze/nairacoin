@@ -34,6 +34,15 @@ Not the apex `iconiaglobal.com`. Not `ncn.iconiaglobal.com` (shop window). This 
 
 Hex is already in `src/CryptoNoteConfig.h` (GHA `34034833056`). **Do not** run `--print-genesis-tx` again.
 
+Linux x86_64 binary from CI (after green `Build Nairacoin` on `master`):
+```bash
+gh run download --repo Slaze/nairacoin --name nairacoind
+sudo apt-get install -y libboost-all-dev libssl3
+chmod +x nairacoind
+```
+Artifact is Ubuntu 22.04 x86_64. Not Mac. Not Ampere ARM.
+
+Or build on the host:
 ```bash
 cd ~/nairacoin
 # Ubuntu: sudo apt-get install -y build-essential cmake libboost-all-dev

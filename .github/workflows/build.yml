@@ -26,3 +26,19 @@ jobs:
 
     - name: Build Project
       run: cmake --build build --config Release -j$(nproc)
+
+    - name: Stage nairacoind
+      run: |
+        BIN="$(find build -type f -name nairacoind | head -1)"
+        test -n "$BIN"
+        mkdir -p dist
+        cp "$BIN" dist/nairacoind
+        file dist/nairacoind
+        ldd dist/nairacoind
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: nairacoind
+        path: dist/nairacoind
+        if-no-files-found: error
+        retention-days: 14

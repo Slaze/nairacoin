@@ -1,5 +1,21 @@
 # PROJECT_RECAP — nairacoin
 
+## 2026-09-06 — GHA nairacoind artifact
+
+**Goal:** Keep the Linux `nairacoind` binary after CI so a 1 GB VPS can `scp` + run instead of compile.
+
+**What changed:** `.github/workflows/build.yml` stages `dist/nairacoind` and uploads artifact `nairacoind` (14 days). Ubuntu 22.04 x86_64 only. Not Mac. Not Oracle Ampere A1 ARM.
+
+**How to use:** after a green `Build Nairacoin` run on `master`:
+```bash
+gh run download --repo Slaze/nairacoin --name nairacoind
+# target: Ubuntu x86_64 with libboost + libssl
+```
+
+**Do not:** treat the artifact as a seed. Still need public IPv4 TCP 17356.
+
+---
+
 ## 2026-09-06 — CryptoNote genesis hex minted (this tree)
 
 **Goal:** Fill empty `GENESIS_COINBASE_TX_HEX` so `nairacoind` can boot. Do not mix Monero blob. Do not replace GitHub `master`.
