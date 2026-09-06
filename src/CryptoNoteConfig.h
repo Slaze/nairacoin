@@ -74,7 +74,7 @@ const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json"
 
 //TODO Put here the name of your currency
 const char     CRYPTONOTE_NAME[]                             = "nairacoin";
-const char     GENESIS_COINBASE_TX_HEX[]                     = "";
+const char     GENESIS_COINBASE_TX_HEX[]                     = "013c01ff0001ffffffffffff03029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101edc6c12cac53a029cc4ba753c5dd5b115b12e497a1ecbdb4322df7dd4707a6ab"; // minted 2026-09-06 GHA 34034833056 — do not regenerate
 
 const uint8_t  CURRENT_TRANSACTION_VERSION                   =  1;
 const uint8_t  BLOCK_MAJOR_VERSION_1                         =  1;
@@ -104,10 +104,16 @@ const uint64_t P2P_DEFAULT_INVOKE_TIMEOUT                    = 60 * 2 * 1000; //
 const size_t   P2P_DEFAULT_HANDSHAKE_INVOKE_TIMEOUT          = 5000;          // 5 seconds
 const char     P2P_STAT_TRUSTED_PUB_KEY[]                    = "8f80f9a5a434a9f1510d13336228debfee9c918ce505efe225d8c94d045fa115";
 
-//TODO Add here your network seed nodes
+// Seed host is the NairaCoin subdomain (not the apex). P2P port = P2P_DEFAULT_PORT.
+// This fork resolves IPv4 at daemon start (src/P2p/NetNode.cpp Ipv4Resolver).
+// Create a DNS A record: nairacoin.iconiaglobal.com → IPv4 of the machine running
+// nairacoind with TCP 17356 open. Do not invent that IP here. Until the record
+// exists AND nairacoind is listening, this is only a name in the list (resolve
+// failure is logged; the process still starts). 127.0.0.1 is local-dev only —
+// remote peers that hit it connect to themselves, not the public seed.
 const std::initializer_list<const char*> SEED_NODES = {
-  //"111.11.11.11:17356",
-  //"222.22.22.22:17356",
+  "nairacoin.iconiaglobal.com:17356",
+  "127.0.0.1:17356",
 };
 
 struct CheckpointData {
