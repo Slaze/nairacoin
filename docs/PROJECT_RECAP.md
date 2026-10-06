@@ -1,12 +1,18 @@
-## 2026-10-06 — Honest wallet/shop PWA
+## 2026-10-06 — Honest wallet/shop PWA live + Stem
 
 **Goal:** Installable Nairacoin window for Stem (status, wallet explainer, Get NCN via Lvfe, bureau).
 
-**What changed:** `shop/` → multi-section PWA (`manifest.webmanifest`, `sw.js`, icons, Home/Status/Wallet/Get/Bureau). Buy deep-links to Lvfe `?hub=wallet`.
+**What changed:** `shop/` → multi-section PWA (`manifest.webmanifest`, `service-worker.js`, icons 192/512, Home/Status/Wallet/Get/Bureau). Buy deep-links to Lvfe `?hub=wallet`.
 
-**Deploy:** GitHub Pages workflow on `shop/**`. Custom domain `ncn.iconiaglobal.com` needs CNAME → Pages (not Namecheap default page).
+**Deploy:**
+- GitHub Pages: `https://slaze.github.io/nairacoin/` (workflow on `shop/**`)
+- Apex mirror: `https://iconiaglobal.com/ncn/`
+- Canonical: `https://ncn.iconiaglobal.com/` (cPanel subdomain docroot `public_html/ncn` behind Cloudflare)
+- Stem: catalog slug `nairacoin` featured
 
-**Next:** Stem seed `nairacoin`; human DNS if `ncn` still parks on cPanel.
+**How verified:** `ncn` HTML/manifest/SW/icons → 200; featured API includes `nairacoin`; copy does not claim mainnet live.
+
+**Next:** Seed VPS / daemon on `nairacoin.*` (separate money MIT). Optional CF purge of old `sw.js` 404 cache (renamed to `service-worker.js`).
 
 ---
 
