@@ -1,16 +1,29 @@
-# NCN/BTC shop window
+# Nairacoin shop / wallet PWA
 
-Live target after Pages: `https://slaze.github.io/nairacoin/` then CNAME `ncn.iconiaglobal.com`.
+Installable window for **Nairacoin (NCN)** — status, wallet explainer, Get NCN (via Lvfe), and NCN/BTC bureau ticket.
 
-Static bureau ticket. Serve `index.html` at `ncn.iconiaglobal.com`.
+## Live targets
 
-## DNS (you)
+- GitHub Pages: `https://slaze.github.io/nairacoin/` (deployed from this `shop/` folder via `.github/workflows/shop-pages.yml`)
+- Custom domain: `https://ncn.iconiaglobal.com/` — DNS must be **CNAME `ncn` → `slaze.github.io`** (or Pages hostname), **not** orange-clouded to Namecheap default webpage.
+- Daemon hostname stays separate: `nairacoin.iconiaglobal.com` → real VPS when seeds exist.
 
-1. At the registrar for `iconiaglobal.com`, add:
-   - `CNAME ncn` → GitHub Pages host **or** your VPS hostname
-2. If GitHub Pages: repo Settings → Pages → `/shop` or deploy this folder. This `CNAME` file is the Pages custom domain.
-3. HTTPS: Pages does it; a VPS needs Caddy/nginx + Let's Encrypt.
+## Contents
 
-Quotes stay `TBD` until unique genesis + a funded BTC address.
+- `index.html` — Home / Status / Wallet / Get / Bureau
+- `manifest.webmanifest` + `sw.js` + `icons/` — PWA install
+- `CNAME` — `ncn.iconiaglobal.com` for Pages custom domain
 
-Not a peg. Opening book ~$10 BTC after the chain lives.
+## Get NCN
+
+v1 deep-links to Lvfe Wallet Buy:
+
+`https://iconiaglobal.com/lvfe/?play=1&hub=wallet`
+
+No second Paystack merchant on this domain.
+
+## DNS (human)
+
+1. Cloudflare DNS for `iconiaglobal.com`: `CNAME ncn` → `slaze.github.io` (DNS only or proxied per Pages docs; Pages custom domain must be verified).
+2. Remove any A record that sends `ncn` to `198.54.120.94` (that serves cPanel default page).
+3. Repo Settings → Pages → custom domain `ncn.iconiaglobal.com` + HTTPS.

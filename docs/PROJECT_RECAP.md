@@ -1,3 +1,15 @@
+## 2026-10-06 — Honest wallet/shop PWA
+
+**Goal:** Installable Nairacoin window for Stem (status, wallet explainer, Get NCN via Lvfe, bureau).
+
+**What changed:** `shop/` → multi-section PWA (`manifest.webmanifest`, `sw.js`, icons, Home/Status/Wallet/Get/Bureau). Buy deep-links to Lvfe `?hub=wallet`.
+
+**Deploy:** GitHub Pages workflow on `shop/**`. Custom domain `ncn.iconiaglobal.com` needs CNAME → Pages (not Namecheap default page).
+
+**Next:** Stem seed `nairacoin`; human DNS if `ncn` still parks on cPanel.
+
+---
+
 # PROJECT_RECAP — nairacoin
 
 ## 2026-09-06 — GHA nairacoind artifact
