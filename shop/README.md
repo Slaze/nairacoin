@@ -11,7 +11,7 @@ Installable window for **Nairacoin (NCN)** — status, wallet explainer, Get NCN
 ## Contents
 
 - `index.html` — Home / Status / Wallet / Get / Bureau
-- `manifest.webmanifest` + `sw.js` + `icons/` — PWA install
+- `manifest.webmanifest` + `service-worker.js` + `icons/` — PWA install
 - `CNAME` — `ncn.iconiaglobal.com` for Pages custom domain
 
 ## Get NCN

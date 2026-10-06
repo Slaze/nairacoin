@@ -1,11 +1,11 @@
 /* Nairacoin shop PWA — shell cache; network-first for HTML */
-const CACHE = "ncn-shop-v1";
+const CACHE = "ncn-shop-v2";
 const SHELL = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
-  "./icons/icon-512.png",
+  "./icons/icon512.png",
 ];
 
 self.addEventListener("install", (event) => {
