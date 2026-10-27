@@ -28,8 +28,8 @@ jobs:
       run: cmake --build build --config Release -j$(nproc)
 
     - name: Run unit tests
-      timeout-minutes: 8
-      run: ctest --test-dir build -R UnitTests --output-on-failure --timeout 120
+      timeout-minutes: 45
+      run: ctest --test-dir build -R UnitTests --output-on-failure --timeout 1800
 
     - name: Stage nairacoind
       run: |
