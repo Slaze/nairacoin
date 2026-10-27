@@ -27,6 +27,9 @@ jobs:
     - name: Build Project
       run: cmake --build build --config Release -j$(nproc)
 
+    - name: Run unit tests
+      run: ctest --test-dir build -R UnitTests --output-on-failure
+
     - name: Stage nairacoind
       run: |
         BIN="$(find build -type f -name nairacoind | head -1)"
