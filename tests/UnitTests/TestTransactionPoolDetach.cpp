@@ -271,8 +271,10 @@ TEST_F(DetachTest, testBlockchainDetach) {
   addAccounts(2);
   subscribeAccounts();
 
-  generator.generateEmptyBlocks(m_currency.minedMoneyUnlockWindow() + 1);
-  
+  // Coinbase outputs unlock one block after the unlock window, so mine a few
+  // extra blocks to cover sendAmount (four block rewards).
+  generator.generateEmptyBlocks(m_currency.minedMoneyUnlockWindow() + 10);
+
   syncCompleted = std::promise<std::error_code>();
   syncCompletedFuture = syncCompleted.get_future();
   m_sync.addObserver(this);
