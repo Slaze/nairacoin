@@ -219,7 +219,7 @@ protected:
 
   const uint64_t SENT = 1122334455;
   const uint64_t FEE;
-  const std::string RANDOM_ADDRESS = "2FQa4yuQaiTz4NLvwxUXeCQmVLNBhK4tE5cE3m5zL1LVFo2R3ocjqirSQCXTNJZbEpTS4pbRAcvStNNWa1uVFpECJJFChM";
+  const std::string RANDOM_ADDRESS = "2Ke8AosB6jsfL6EopfU6BkwaK8mh3yrd4gPzYfCTyeHvyPgoRR5rXwvLfv4nRrUvi1F4nUHc5J8SKciXvEdamZRGwnrSjg";
   const uint64_t FUSION_THRESHOLD;
 };
 
