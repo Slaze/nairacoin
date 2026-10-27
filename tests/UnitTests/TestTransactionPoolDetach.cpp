@@ -271,7 +271,7 @@ TEST_F(DetachTest, testBlockchainDetach) {
   addAccounts(2);
   subscribeAccounts();
 
-  generator.generateEmptyBlocks(20);
+  generator.generateEmptyBlocks(m_currency.minedMoneyUnlockWindow() + 1);
   
   syncCompleted = std::promise<std::error_code>();
   syncCompletedFuture = syncCompleted.get_future();
@@ -377,7 +377,7 @@ TEST_F(DetachTest, testDetachWithWallet) {
   generator.getBlockRewardForAddress(AliceKeys.address);
 
 
-  generator.generateEmptyBlocks(10);
+  generator.generateEmptyBlocks(m_currency.minedMoneyUnlockWindow() + 1);
 
   AliceCompleted.syncCompleted = std::promise<std::error_code>();
   AliceCompleted.syncCompletedFuture = AliceCompleted.syncCompleted.get_future();

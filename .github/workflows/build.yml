@@ -32,6 +32,7 @@ jobs:
       run: ctest --test-dir build -R UnitTests --output-on-failure --timeout 1800
 
     - name: Stage nairacoind
+      if: always()
       run: |
         BIN="$(find build -type f -name nairacoind | head -1)"
         test -n "$BIN"
@@ -41,6 +42,7 @@ jobs:
         ldd dist/nairacoind
 
     - uses: actions/upload-artifact@v4
+      if: always()
       with:
         name: nairacoind
         path: dist/nairacoind

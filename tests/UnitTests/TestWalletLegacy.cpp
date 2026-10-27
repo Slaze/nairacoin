@@ -223,7 +223,7 @@ void WalletLegacyApi::GetOneBlockReward(CryptoNote::WalletLegacy& wallet, const 
 void WalletLegacyApi::GetOneBlockRewardAndUnlock(CryptoNote::WalletLegacy& wallet, TrivialWalletObserver& observer, INodeTrivialRefreshStub& node,
                                                  const CryptoNote::Currency& currency, TestBlockchainGenerator& blockchainGenerator) {
   GetOneBlockReward(wallet, currency, blockchainGenerator);
-  blockchainGenerator.generateEmptyBlocks(10);
+  blockchainGenerator.generateEmptyBlocks(currency.minedMoneyUnlockWindow() + 1);
   node.updateObservers();
   WaitWalletSync(&observer);
 }
@@ -1742,7 +1742,7 @@ TEST_F(WalletLegacyApi, outdatedUnconfirmedTransactionDeletedOnNewBlock) {
 
   GetOneBlockRewardAndUnlock(wallet, walletObserver, node, currency, blockchainGenerator);
 
-  const std::string ADDRESS = "2Ke8AosB6jsfL6EopfU6BkwaK8mh3yrd4gPzYfCTyeHvyPgoRR5rXwvLfv4nRrUvi1F4nUHc5J8SKciXvEdamZRGwnrSjg";
+  const std::string ADDRESS = "1SqCdzr2Nv6JbmXwbHRRaQ3goZ19PxB6uG3phoZv6GncGdtqyonbMgBCjGJMEqsZxxZZwD8UBXRonKHu9Tpx6deu9avyz1t";
   node.setNextTransactionToPool();
   auto id = wallet.sendTransaction({ADDRESS, static_cast<int64_t>(TEST_BLOCK_REWARD - m_currency.minimumFee())}, m_currency.minimumFee());
   WaitWalletSend(&walletObserver);
@@ -1778,7 +1778,7 @@ TEST_F(WalletLegacyApi, outdatedUnconfirmedTransactionDeletedOnLoad) {
 
   GetOneBlockRewardAndUnlock(wallet, walletObserver, node, currency, blockchainGenerator);
 
-  const std::string ADDRESS = "2Ke8AosB6jsfL6EopfU6BkwaK8mh3yrd4gPzYfCTyeHvyPgoRR5rXwvLfv4nRrUvi1F4nUHc5J8SKciXvEdamZRGwnrSjg";
+  const std::string ADDRESS = "1SqCdzr2Nv6JbmXwbHRRaQ3goZ19PxB6uG3phoZv6GncGdtqyonbMgBCjGJMEqsZxxZZwD8UBXRonKHu9Tpx6deu9avyz1t";
   node.setNextTransactionToPool();
   auto id = wallet.sendTransaction({ADDRESS, static_cast<int64_t>(TEST_BLOCK_REWARD - m_currency.minimumFee())}, m_currency.minimumFee());
   WaitWalletSend(&walletObserver);
