@@ -219,7 +219,7 @@ protected:
 
   const uint64_t SENT = 1122334455;
   const uint64_t FEE;
-  const std::string RANDOM_ADDRESS = "2634US2FAz86jZT73YmM8u5GPCknT2Wxj8bUCKivYKpThFhF2xsjygMGxbxZzM42zXhKUhym6Yy6qHHgkuWtruqiGkDpX6m";
+  const std::string RANDOM_ADDRESS = "2FQa4yuQaiTz4NLvwxUXeCQmVLNBhK4tE5cE3m5zL1LVFo2R3ocjqirSQCXTNJZbEpTS4pbRAcvStNNWa1uVFpECJJFChM";
   const uint64_t FUSION_THRESHOLD;
 };
 
@@ -584,7 +584,7 @@ std::vector<CryptoNote::WalletTransfer> getTransfersFromTransaction(CryptoNote::
   return result;
 }
 
-static const uint64_t TEST_BLOCK_REWARD = 70368744177663;
+static const uint64_t TEST_BLOCK_REWARD = 17592186044415;
 
 TEST_F(WalletApi, emptyBalance) {
   ASSERT_EQ(0, alice.getActualBalance());

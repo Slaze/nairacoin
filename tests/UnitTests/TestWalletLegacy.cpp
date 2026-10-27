@@ -102,7 +102,7 @@ struct SaveOnInitWalletObserver: public CryptoNote::IWalletLegacyObserver {
   std::stringstream stream;
 };
 
-static const uint64_t TEST_BLOCK_REWARD = 70368744177663;
+static const uint64_t TEST_BLOCK_REWARD = 17592186044415;
 
 CryptoNote::TransactionId TransferMoney(CryptoNote::WalletLegacy& from, CryptoNote::WalletLegacy& to, int64_t amount, uint64_t fee, uint64_t mixIn = 0, const std::string& extra = "") {
   CryptoNote::WalletLegacyTransfer transfer;
@@ -1742,7 +1742,7 @@ TEST_F(WalletLegacyApi, outdatedUnconfirmedTransactionDeletedOnNewBlock) {
 
   GetOneBlockRewardAndUnlock(wallet, walletObserver, node, currency, blockchainGenerator);
 
-  const std::string ADDRESS = "2634US2FAz86jZT73YmM8u5GPCknT2Wxj8bUCKivYKpThFhF2xsjygMGxbxZzM42zXhKUhym6Yy6qHHgkuWtruqiGkDpX6m";
+  const std::string ADDRESS = "2FQa4yuQaiTz4NLvwxUXeCQmVLNBhK4tE5cE3m5zL1LVFo2R3ocjqirSQCXTNJZbEpTS4pbRAcvStNNWa1uVFpECJJFChM";
   node.setNextTransactionToPool();
   auto id = wallet.sendTransaction({ADDRESS, static_cast<int64_t>(TEST_BLOCK_REWARD - m_currency.minimumFee())}, m_currency.minimumFee());
   WaitWalletSend(&walletObserver);
@@ -1778,7 +1778,7 @@ TEST_F(WalletLegacyApi, outdatedUnconfirmedTransactionDeletedOnLoad) {
 
   GetOneBlockRewardAndUnlock(wallet, walletObserver, node, currency, blockchainGenerator);
 
-  const std::string ADDRESS = "2634US2FAz86jZT73YmM8u5GPCknT2Wxj8bUCKivYKpThFhF2xsjygMGxbxZzM42zXhKUhym6Yy6qHHgkuWtruqiGkDpX6m";
+  const std::string ADDRESS = "2FQa4yuQaiTz4NLvwxUXeCQmVLNBhK4tE5cE3m5zL1LVFo2R3ocjqirSQCXTNJZbEpTS4pbRAcvStNNWa1uVFpECJJFChM";
   node.setNextTransactionToPool();
   auto id = wallet.sendTransaction({ADDRESS, static_cast<int64_t>(TEST_BLOCK_REWARD - m_currency.minimumFee())}, m_currency.minimumFee());
   WaitWalletSend(&walletObserver);
